@@ -3,6 +3,7 @@
 module.exports = {
 	root: true,
 	extends: 'ckeditor5',
+	ignorePatterns: [ 'dist' ],
 	env: {
 		node: true,
 		browser: false,
