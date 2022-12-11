@@ -21,6 +21,7 @@
 	"scripts": {
 		"build": "webpack --mode production",
 		"dev": "webpack serve",
-		"lint": "eslint **/*.{js,mjs}"
+		"lint": "eslint **/*.{js,mjs}",
+		"fetchData": "node ./scripts/fetchData.mjs"
 	}
 }

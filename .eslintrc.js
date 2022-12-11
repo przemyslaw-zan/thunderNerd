@@ -5,16 +5,15 @@ module.exports = {
 	extends: 'ckeditor5',
 	ignorePatterns: [ 'dist' ],
 	env: {
-		node: true,
-		browser: false,
-		es2021: true
+		node: true
 	},
 	parserOptions: {
-		sourceType: 'script'
+		sourceType: 'script',
+		ecmaVersion: 'latest'
 	},
 	overrides: [
 		{
-			files: [ './src/**' ],
+			files: [ './*/**' ],
 			env: {
 				node: false,
 				browser: true
