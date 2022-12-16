@@ -21,10 +21,16 @@ module.exports = {
 			parserOptions: {
 				sourceType: 'module'
 			}
+		},
+		{
+			files: [ './scripts/**' ],
+			env: {
+				node: true
+			}
 		}
 	],
 	rules: {
-		'no-multiple-empty-lines': [ 'error', { max: 2, maxEOF: 0 } ],
+		'no-multiple-empty-lines': [ 'error', { max: 1, maxEOF: 0 } ],
 		'strict': [ 'error', 'global' ]
 	}
 };

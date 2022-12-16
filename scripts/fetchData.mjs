@@ -1,9 +1,10 @@
 import GithubFetcher from './GithubFetcher.mjs';
+import getObtainableVehicles from './getObtainableVehicles.mjs';
 
 const githubFetcher = new GithubFetcher( 'gszabi99/War-Thunder-Datamine' );
 
-const torpedoes = await githubFetcher.getBlkxFilesFromDirectory( 'aces.vromfs.bin_u/gamedata/weapons/torpedoes' );
-const shop = await githubFetcher.getBlkxFileContent( 'char.vromfs.bin_u/config/shop.blkx' );
+// const torpedoes = await githubFetcher.getBlkxFilesFromDirectory( 'aces.vromfs.bin_u/gamedata/weapons/torpedoes' );
 
-console.log( torpedoes );
-console.log( shop );
+const obtainableVessels = await getObtainableVehicles( githubFetcher, [ 'ships', 'boats' ] );
+
+console.log( obtainableVessels );
