@@ -5,7 +5,7 @@ export default class GithubFetcher {
 
 	async getBlkxFileContent( filePath ) {
 		const base = `https://raw.githubusercontent.com/${ this.repository }/master/`;
-		const fullPath = base + filePath.replace( /\.blk$/, '.blkx' ).toLowerCase();
+		const fullPath = base + filePath.replace( /\.blk$/, '.blkx' ).replace( /(?<!\.blkx)$/, '.blkx' ).toLowerCase();
 		const response = await fetch( fullPath );
 		const responseContent = await response.text();
 

@@ -32,6 +32,18 @@ export default class Vehicle {
 		const repoUrl = `aces.vromfs.bin_u/gamedata/${ repoMap[ this.type ] }/${ this.vehicleKey }.blkx`;
 		const data = await githubFetcher.getBlkxFileContent( repoUrl );
 
+		// TODO: this is temporary.
+		if ( data.modifications.torpedoes_movement_mode ) {
+			const { distToLive, maxSpeedInWater } = data.modifications.torpedoes_movement_mode.effects;
+
+			this.modifications = {
+				torpedoMode: {
+					speedMps: maxSpeedInWater,
+					range: distToLive
+				}
+			};
+		}
+
 		if ( !( data.weapon_presets.preset instanceof Array ) ) {
 			data.weapon_presets.preset = [ data.weapon_presets.preset ];
 		}
