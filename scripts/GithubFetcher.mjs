@@ -5,8 +5,15 @@ export default class GithubFetcher {
 
 	async getBlkxFileContent( filePath ) {
 		const base = `https://raw.githubusercontent.com/${ this.repository }/master/`;
-		const response = await fetch( base + filePath );
-		return response.json();
+		const fullPath = base + filePath.replace( /\.blk$/, '.blkx' ).toLowerCase();
+		const response = await fetch( fullPath );
+		const responseContent = await response.text();
+
+		if ( responseContent.includes( '404: Not Found' ) ) {
+			throw new Error( `This file does not exist:\n${ fullPath }` );
+		}
+
+		return JSON.parse( responseContent );
 	}
 
 	async getBlkxFilesFromDirectory( directoryPath ) {
